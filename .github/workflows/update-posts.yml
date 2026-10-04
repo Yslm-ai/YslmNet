@@ -1,0 +1,43 @@
+name: Update posts
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # каждые 15 минут
+  workflow_dispatch:          # кнопка "Run workflow" вручную
+
+permissions:
+  contents: write             # чтобы git push работал
+
+concurrency:
+  group: update-posts
+  cancel-in-progress: false   # не даём двум запускам пересечься
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run update_posts.py
+        env:
+          TG_BOT_TOKEN:   ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHANNEL:     ${{ secrets.TG_CHANNEL }}
+          GITVERSE_TOKEN: ${{ secrets.GITVERSE_TOKEN }}
+          GITVERSE_OWNER: ${{ vars.GITVERSE_OWNER }}
+          GITVERSE_REPO:  ${{ vars.GITVERSE_REPO }}
+          GITVERSE_BRANCH: main
+          GITVERSE_PATH:  posts.md
+        run: python update_posts.py
+
+      - name: Commit to GitHub
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add posts.md
+          git diff --cached --quiet && echo "no changes" || \
+            git commit -m "Update posts.md ($(date -u +%FT%TZ))"
+          git push
