@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Koder — Блог о разработке</title>
     <meta name="description" content="Новости и обзоры из мира IT. Что нового на канале?">
+
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -17,7 +18,7 @@
             font-family: 'Arial', 'TildaSans', sans-serif;
             background-color: #000000;
             margin: 0;
-            scroll-behavior: smooth; /* Плавная прокрутка для всей страницы */
+            scroll-behavior: smooth;
         }
 
         /* ===== АНИМАЦИИ ===== */
@@ -42,7 +43,8 @@
         }
 
         @keyframes arrowBounce {
-            0%, 100% {
+            0%,
+            100% {
                 transform: translateY(0);
             }
             50% {
@@ -61,7 +63,7 @@
             transform: translateY(0);
         }
 
-        /* ===== HEADER (НАВИГАЦИЯ) ===== */
+        /* ===== HEADER ===== */
         .header {
             background-color: #000000;
             padding: 15px 20px;
@@ -114,7 +116,7 @@
             transform: translateY(-2px);
         }
 
-        /* ===== ГЛАВНЫЙ БЛОК (HERO) — НОВЫЙ ЦВЕТ ФОНА ===== */
+        /* ===== HERO ===== */
         .hero {
             background: linear-gradient(135deg, #0a0f0a 0%, #051505 50%, #000000 100%);
             position: relative;
@@ -127,7 +129,6 @@
             overflow: hidden;
         }
 
-        /* Анимированный фон с "матрицей" */
         .hero::before {
             content: "";
             position: absolute;
@@ -172,7 +173,6 @@
             opacity: 0.9;
         }
 
-        /* КНОПКИ */
         .buttons {
             display: flex;
             gap: 20px;
@@ -215,7 +215,6 @@
             transform: translateY(-3px);
         }
 
-        /* СТРЕЛКА ВНИЗ */
         .hero__arrow {
             position: absolute;
             bottom: 30px;
@@ -232,7 +231,142 @@
             height: 19px;
         }
 
-        /* ===== СЕКЦИЯ С ПОДВАЛОМ (НОВЫЙ ДИЗАЙН) ===== */
+        /* ===== POST FEED ===== */
+        .feed-wrapper {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            background: #111111;
+            border: 1px solid #222222;
+            border-radius: 12px 12px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .feed-header:hover {
+            background: rgba(20, 255, 0, 0.05);
+            border-color: #14ff00;
+        }
+
+        .feed-header h2 {
+            color: #14ff00;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .feed-header .post-count {
+            color: #666;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .feed-toggle {
+            color: #14ff00;
+            font-size: 28px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .feed-toggle.expanded {
+            transform: rotate(180deg);
+        }
+
+        #telegram-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px 0;
+            max-height: 10000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.4s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        #telegram-feed.collapsed {
+            max-height: 0 !important;
+            padding: 0 !important;
+            opacity: 0;
+        }
+
+        .feed-body {
+            background: #111111;
+            border: 1px solid #222222;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .feed-body.collapsed {
+            border: 1px solid #222222;
+            border-radius: 12px;
+        }
+
+        .post-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin: 0 10px;
+            box-shadow: 0 2px 10px rgba(20, 255, 0, 0.03);
+            line-height: 1.6;
+            color: #dddddd;
+            white-space: pre-wrap;
+            transition: all 0.2s ease;
+        }
+
+        .post-card:hover {
+            border-color: #14ff00;
+            transform: translateY(-2px);
+        }
+
+        .post-card:last-child {
+            margin-bottom: 5px;
+        }
+
+        .loading-text {
+            text-align: center;
+            color: #666666;
+            font-size: 1.2rem;
+            padding: 40px;
+        }
+
+        /* ===== ABOUT & REVIEWS ===== */
+        .section-block {
+            background-color: #000000;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(20, 255, 0, 0.2);
+        }
+
+        .section-block__inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            color: #14ff00;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .section-text {
+            color: #cccccc;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
         .footer-section {
             background: linear-gradient(180deg, #000000 0%, #0a1a0a 100%);
             padding: 60px 20px 40px;
@@ -273,7 +407,6 @@
             transform: scale(1.05);
         }
 
-        /* КЛИКАБЕЛЬНАЯ КНОПКА "НАВЕРХ" */
         .btn-to-top {
             background-color: #14ff00;
             color: #000000;
@@ -307,200 +440,373 @@
             font-size: 14px;
         }
 
-        /* ===== АДАПТИВНОСТЬ ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .header__container {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .hero__title {
                 font-size: 40px;
             }
-            
+
             .hero__descr {
                 font-size: 18px;
             }
-            
+
             .footer-title {
                 font-size: 32px;
             }
-            
+
             .btn-to-top {
                 font-size: 22px;
                 padding: 12px 30px;
             }
-            
+
             .logo {
                 font-size: 36px;
             }
+
+            .feed-header h2 {
+                font-size: 20px;
+            }
+
+            .post-card {
+                padding: 15px 18px;
+                margin: 0 5px;
+            }
         }
-        
+
         @media (max-width: 480px) {
             .nav-links {
                 gap: 20px;
             }
-            
+
             .hero__title {
                 font-size: 32px;
             }
-            
+
             .btn {
                 padding: 10px 24px;
                 font-size: 14px;
             }
+
+            .feed-header {
+                padding: 15px 18px;
+            }
+
+            .feed-header h2 {
+                font-size: 17px;
+            }
+
+            .post-card {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
         }
+
+        /* ===== РАЗМЕТКА ВНУТРИ ПОСТОВ (posts.md) ===== */
+        .post-date { color: #6b8f6b; font-size: 13px; margin-bottom: 8px; }
+        .post-card a { color: #14ff00; }
+        .post-card code { background: #151515; border: 1px solid #222; border-radius: 4px; padding: 0 5px; font-family: Consolas, monospace; }
+        .post-card pre { background: #050505; border: 1px solid #222; border-radius: 6px; padding: 10px; margin: 8px 0; overflow-x: auto; white-space: pre; }
+        .post-card pre code { background: none; border: 0; padding: 0; }
     </style>
 </head>
 <body>
 
-<div id="allrecords">
-    <!-- ХЕДЕР -->
-    <header class="header">
-        <div class="header__container">
-            <a href="#" class="logo" id="logoLink">Koder</a>
-            <div class="nav-links">
-                <a href="#about" class="nav-link">О влоге</a>
-                <a href="#reviews" class="nav-link">Отзывы</a>
-                <a href="#hero" class="nav-link">Канал</a>
+    <div id="allrecords">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header__container">
+                <a href="#" class="logo" id="logoLink">Koder</a>
+                <nav class="nav-links">
+                    <a href="#about" class="nav-link">О влоге</a>
+                    <a href="#reviews" class="nav-link">Отзывы</a>
+                    <a href="#hero" class="nav-link">Канал</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero__content">
+                <div class="hero__uptitle animate-on-scroll">Новости за неделю</div>
+                <h1 class="hero__title animate-on-scroll">Что нового?</h1>
+                <p class="hero__descr animate-on-scroll">Что автор канала опять напридумывал?</p>
+                <div class="buttons animate-on-scroll">
+                    <a href="#about" class="btn btn--primary">О влоге</a>
+                    <a href="https://t.me/kod_way" target="_blank" class="btn btn--secondary" rel="noopener noreferrer">Telegram</a>
+                </div>
+            </div>
+            <div class="hero__arrow" id="scrollArrow">
+                <svg viewBox="0 0 38.417 18.592">
+                    <path d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- TELEGRAM FEED -->
+        <div class="feed-wrapper">
+            <div class="feed-header" id="feedToggle">
+                <div>
+                    <h2>📰 Новости канала</h2>
+                    <span class="post-count" id="postCount">Загрузка...</span>
+                </div>
+                <span class="feed-toggle expanded" id="feedToggleIcon">▼</span>
+            </div>
+            <div class="feed-body" id="feedBody">
+                <div id="telegram-feed">
+                    <div class="loading-text">Загрузка последних новостей с канала...</div>
+                </div>
             </div>
         </div>
-    </header>
 
-    <!-- ГЛАВНЫЙ БЛОК (HERO) с изменённым фоном и анимацией -->
-    <section class="hero" id="hero">
-        <div class="hero__content">
-            <div class="hero__uptitle animate-on-scroll">Новости за неделю</div>
-            <h1 class="hero__title animate-on-scroll">Что нового?</h1>
-            <p class="hero__descr animate-on-scroll">Что автор канала опять напридумывал?</p>
-            <div class="buttons animate-on-scroll">
-                <a href="#about" class="btn btn--primary">О влоге</a>
-                <a href="https://t.me/kod_way" target="_blank" class="btn btn--secondary" rel="noopener noreferrer">Telegram</a>
+        <!-- ABOUT -->
+        <div class="section-block" id="about">
+            <div class="section-block__inner animate-on-scroll">
+                <h2 class="section-title">О блоге Koder</h2>
+                <p class="section-text">Привет! Это блог о современных технологиях, разработке и всём, что связано с IT.</p>
             </div>
         </div>
-        <div class="hero__arrow" id="scrollArrow">
-            <svg viewBox="0 0 38.417 18.592">
-                <path d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z"></path>
-            </svg>
-        </div>
-    </section>
 
-    <!-- СЕКЦИЯ "О ВЛОГЕ" (якорь) -->
-    <div id="about"
-         style="background-color: #000000; padding: 60px 20px; text-align: center; border-top: 1px solid rgba(20,255,0,0.2);">
-        <div class="animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
-            <h2 style="color: #14ff00; font-size: 36px; margin-bottom: 20px;">О блоге Koder</h2>
-            <p style="color: #cccccc; font-size: 18px; line-height: 1.6;">Привет! Это блог о современных технологиях,
-                разработке и всём, что связано с IT.</p>
+        <!-- REVIEWS -->
+        <div class="section-block" id="reviews">
+            <div class="section-block__inner animate-on-scroll">
+                <script src="https://forms.yandex.ru/_static/embed.js"></script>
+                <iframe src="https://forms.yandex.ru/u/67dd1ba750569024833a544f?iframe=1" frameborder="0" name="ya-form-67dd1ba750569024833a544f" width="650"></iframe>
+            </div>
         </div>
+
+        <!-- FOOTER -->
+        <footer class="footer-section" id="contact">
+            <div class="footer-section__content">
+                <div class="footer-title animate-on-scroll">Тёмный подвал</div>
+                <div class="footer-dino animate-on-scroll">
+                    <img src="dino.png" alt="dino icon">
+                </div>
+                <button class="btn-to-top" id="goToTopBtn">↑ Наверх</button>
+            </div>
+        </footer>
+
     </div>
 
-    <div id="reviews"
-         style="background-color: #000000; padding: 60px 20px; text-align: center; border-top: 1px solid rgba(20,255,0,0.2);">
-        <div class="animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
-            <script src="https://forms.yandex.ru/_static/embed.js"></script>
-            <iframe src="https://forms.yandex.ru/u/67dd1ba750569024833a544f?iframe=1" frameborder="0"
-                    name="ya-form-67dd1ba750569024833a544f" width="650"></iframe>
-        </div>
-    </div>
+    <script>
+        (function() {
 
+            // ===== API =====
+            const POSTS_URL = 'posts.md';                                   // файл с постами в репозитории
+            const USE_API_FALLBACK = false;                                  // true — при ошибке posts.md брать посты со старого API
+            const API_URL = 'https://yslm.pythonanywhere.com/get-posts';
 
-    <!-- НИЖНЯЯ СЕКЦИЯ (ТЁМНЫЙ ПОДВАЛ) + КЛИКАБЕЛЬНАЯ КНОПКА НАВЕРХ -->
-    <footer class="footer-section" id="contact">
-        <div class="footer-section__content">
-            <div class="footer-title animate-on-scroll">Тёмный подвал</div>
-            <div class="footer-dino animate-on-scroll">
-                <!-- Дино-иконка с анимацией -->
-                <img src="dino.png" alt="dino icon" style="width: 80px;">
-            </div>
+            // ===== Управление сворачиванием блока =====
+            const feedToggle = document.getElementById('feedToggle');
+            const feedBody = document.getElementById('feedBody');
+            const feedContainer = document.getElementById('telegram-feed');
+            const feedToggleIcon = document.getElementById('feedToggleIcon');
+            let isFeedExpanded = true;
 
-            <!-- КЛИКАБЕЛЬНАЯ КНОПКА "НАВЕРХ" с плавной прокруткой и анимацией -->
-            <button class="btn-to-top" id="goToTopBtn">
-                ↑ Наверх
-            </button>
-        </div>
-    </footer>
-</div>
+            feedToggle.addEventListener('click', function() {
+                isFeedExpanded = !isFeedExpanded;
+                feedContainer.classList.toggle('collapsed');
+                feedBody.classList.toggle('collapsed');
+                feedToggleIcon.classList.toggle('expanded');
+                feedToggleIcon.textContent = isFeedExpanded ? '▼' : '▶';
+            });
 
-<script>
-    (function() {
-        // ===== ПЛАВНАЯ ПРОКРУТКА ДЛЯ КНОПКИ "НАВЕРХ" =====
-        const topButton = document.getElementById('goToTopBtn');
-        if (topButton) {
-            topButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            // ===== Безопасная отрисовка Markdown из posts.md =====
+            function renderMd(src) {
+                var tokens = [];
+                function stash(html) { tokens.push(html); return '\u0000' + (tokens.length - 1) + '\u0000'; }
+                function esc(t) {
+                    return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                }
+                var lines = src.split('\n'), out = [], inCode = false, code = [];
+                lines.forEach(function (line) {
+                    if (/^```/.test(line)) {
+                        if (inCode) { out.push(stash('<pre><code>' + esc(code.join('\n')) + '</code></pre>')); code = []; }
+                        inCode = !inCode;
+                        return;
+                    }
+                    if (inCode) { code.push(line); return; }
+                    out.push(line);
+                });
+                if (inCode && code.length) out.push(stash('<pre><code>' + esc(code.join('\n')) + '</code></pre>'));
+
+                var t = esc(out.join('\n'));
+                t = t.replace(/\\([\\*`\[\]])/g, function (m, c) { return stash(c); });               // \* \` \[ \]
+                t = t.replace(/`([^`\n]+)`/g, function (m, c) { return stash('<code>' + c + '</code>'); });
+                t = t.replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g, function (m, label, url) {
+                    return stash('<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + label + '</a>');
+                });
+                t = t.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+                t = t.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+                for (var n = 0; n < 3; n++) {                                                       // токены могут быть вложены
+                    t = t.replace(/\u0000(\d+)\u0000/g, function (m, i) { return tokens[+i]; });
+                }
+                return t;
+            }
+
+            // Разбор posts.md. Основной формат (его пишет update_posts.py):
+            //   <!-- post:ID --> / ### дата / текст / ---
+            // Если маркеров нет, файл читается как обычный список постов, разделённых строкой ---.
+            function parsePosts(md) {
+                md = md.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
+                var parts = md.split(/<!--\s*post:(\d+)\s*-->/), posts = [];
+                for (var i = 1; i < parts.length; i += 2) {
+                    posts.push(makePost(+parts[i], parts[i + 1]));
+                }
+                if (!posts.length) {
+                    var plain = md.replace(/<!--[\s\S]*?-->/g, '');
+                    var blocks = plain.split(/\n[ \t]*---+[ \t]*(?:\n|$)/).map(function (b) { return b.trim(); }).filter(Boolean);
+                    blocks.forEach(function (b, idx) { posts.push(makePost(blocks.length - idx, b)); });
+                }
+                return posts.filter(function (p) { return p.text; }).sort(function (a, b) { return b.id - a.id; });
+            }
+
+            function makePost(id, raw) {
+                var body = raw.replace(/\n---\s*$/, '').trim();
+                var m = body.match(/^###\s+(.+)\n?/);
+                var date = m ? m[1].trim() : '';
+                if (m) body = body.slice(m[0].length).trim();
+                return { id: id, date: date, text: body };
+            }
+
+            function fmtDate(d) {
+                var x = new Date(d);
+                return isNaN(x) ? d : x.toLocaleString('ru-RU', { dateStyle: 'long', timeStyle: 'short' });
+            }
+
+            async function loadFromMd() {
+                var r = await fetch(POSTS_URL, { cache: 'no-cache' });
+                if (!r.ok) throw new Error('posts.md: HTTP ' + r.status + ' (файла нет рядом с index.html на сервере)');
+                var text = await r.text();
+                var posts = parsePosts(text);
+                if (!posts.length) {
+                    throw new Error('posts.md загружен (' + text.length + ' символов), но постов в нём нет. ' +
+                        'Запустите update_posts.py или добавьте посты, разделяя их строкой ---');
+                }
+                return posts;
+            }
+
+            async function loadFromApi() {
+                var r = await fetch(API_URL);
+                if (!r.ok) throw new Error('Ошибка HTTP: ' + r.status);
+                var data = await r.json();
+                if (!data.success || !data.posts) return [];
+                return data.posts.map(function (p, i) { return { id: i, date: '', text: p.text }; });
+            }
+
+            async function loadPosts() {
+                const container = document.getElementById('telegram-feed');
+                const postCount = document.getElementById('postCount');
+
+                try {
+                    var posts;
+                    try { posts = await loadFromMd(); }
+                    catch (mdErr) {
+                        if (!USE_API_FALLBACK) throw mdErr;
+                        console.warn(mdErr.message + ' — пробую запасной источник');
+                        posts = await loadFromApi();
+                    }
+
+                    if (!posts.length) {
+                        container.innerHTML = '<div class="loading-text">Пока нет доступных новостей.</div>';
+                        postCount.textContent = '0 постов';
+                        return;
+                    }
+
+                    container.innerHTML = '';
+                    postCount.textContent = posts.length + ' постов';
+
+                    posts.forEach(function (post) {
+                        var card = document.createElement('div');
+                        card.className = 'post-card';
+                        if (post.date) {
+                            var d = document.createElement('div');
+                            d.className = 'post-date';
+                            d.textContent = fmtDate(post.date);
+                            card.appendChild(d);
+                        }
+                        var body = document.createElement('div');
+                        body.innerHTML = renderMd(post.text);
+                        card.appendChild(body);
+                        container.appendChild(card);
+                    });
+                } catch (e) {
+                    console.error('Ошибка:', e);
+                    container.innerHTML = '<div class="loading-text" style="color: #ff3333;">❌ Не удалось загрузить новости.<br><small style="color: #666;"></small></div>';
+                    container.querySelector('small').textContent = e.message;
+                    postCount.textContent = 'Ошибка';
+                }
+            }
+
+            // Запускаем загрузку
+            loadPosts();
+
+            // ===== SMOOTH SCROLL =====
+            function smoothScroll(target) {
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            const topButton = document.getElementById('goToTopBtn');
+            if (topButton) {
+                topButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            const arrow = document.getElementById('scrollArrow');
+            if (arrow) {
+                arrow.addEventListener('click', function() {
+                    smoothScroll(document.getElementById('about'));
+                });
+            }
+
+            const logoLink = document.getElementById('logoLink');
+            if (logoLink) {
+                logoLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            document.querySelectorAll('.nav-link, .btn--primary').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
                 });
             });
-        }
 
-        // ===== СТРЕЛКА ВНИЗ (ПРОКРУТКА К СЕКЦИИ "О ВЛОГЕ") =====
-        const arrow = document.getElementById('scrollArrow');
-        if (arrow) {
-            arrow.addEventListener('click', function() {
-                const aboutSection = document.getElementById('about');
-                if (aboutSection) {
-                    aboutSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        }
+            // ===== SCROLL ANIMATIONS =====
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
 
-        // ===== ЛОГО ТОЖЕ ВЕДЁТ НАВЕРХ =====
-        const logoLink = document.getElementById('logoLink');
-        if (logoLink) {
-            logoLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-
-        // ===== АНИМАЦИЯ ПРИ ПРОКРУТКЕ (появление элементов) =====
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
-        
-        function checkVisibility() {
-            animatedElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                if (rect.top < windowHeight - 100) {
-                    el.classList.add('visible');
-                }
-            });
-        }
-        
-        // Запускаем при загрузке и при скролле
-        window.addEventListener('load', checkVisibility);
-        window.addEventListener('scroll', checkVisibility);
-        checkVisibility(); // на всякий случай
-        
-        // ===== ДОБАВЛЯЕМ ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ ДЛЯ НАВИГАЦИИ =====
-        // Плавная прокрутка для якорных ссылок в меню
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId && targetId !== '#') {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
+            function checkVisibility() {
+                animatedElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        el.classList.add('visible');
                     }
-                }
-            });
-        });
-        
-        // Кнопки "О влоге" в hero-блоке
-        const aboutBtn = document.querySelector('.btn--primary');
-        if (aboutBtn && aboutBtn.getAttribute('href') === '#about') {
-            aboutBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-            });
-        }
-    })();
-</script>
+                });
+            }
 
-<!-- Добавляем поддержку старых браузеров для smooth scroll (полифил не требуется, т.к. современные браузеры поддерживают) -->
+            window.addEventListener('load', checkVisibility);
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+
+        })();
+    </script>
+
 </body>
 </html>
