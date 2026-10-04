@@ -29,7 +29,7 @@ jobs:
           GITVERSE_TOKEN: ${{ secrets.GITVERSE_TOKEN }}
           GITVERSE_OWNER: ${{ vars.GITVERSE_OWNER }}
           GITVERSE_REPO:  ${{ vars.GITVERSE_REPO }}
-          GITVERSE_BRANCH: ${{ vars.GITVERSE_BRANCH }}
+          GITVERSE_BRANCH: master
           GITVERSE_PATH:  posts.md
         run: python update_posts.py
 
