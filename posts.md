@@ -1,5 +1,16 @@
 <!-- Файл создаётся скриптом update_posts.py. Посты разделены строкой ---, править вручную не нужно. -->
 
+<!-- post:316 -->
+### 2026-10-12T21:24:57+00:00
+
+https://t.me/alexgyvershow/929
+A few minutes later
+https://t.me/alexgyvershow/930
+
+[Открыть в Telegram](https://t.me/kod_way/316)
+
+---
+
 <!-- post:315 -->
 ### 2026-10-10T15:31:45+00:00
 
